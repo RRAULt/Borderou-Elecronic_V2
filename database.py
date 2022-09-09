@@ -7,7 +7,7 @@ class Database:
     def __init__(self, db_name):
         self.connect_ = sqlite3.connect(db_name)
         self.cursor_ = self.connect_.cursor()
-        self.cursor_.execute(f"CREATE TABLE IF NOT EXISTS borderou_electronic (id INTEGER PRIMARY KEY, nume_complet TEXT, domiciliu TEXT, denumirea_speciei_culese TEXT, cantitate INTEGER, pret INTEGER)")
+        self.cursor_.execute("CREATE TABLE IF NOT EXISTS borderou_electronic (id INTEGER PRIMARY KEY, nume_complet TEXT, domiciliu TEXT, denumirea_speciei_culese TEXT, cantitate INTEGER, pret INTEGER)")
         self.connect_.commit()
         
 
@@ -40,7 +40,7 @@ class Database:
         
     def update(self, id,nume_complet, domiciliu, denumirea_speciei_culese, cantitate, pret):                 
         self.cursor_.execute(
-            f"UPDATE borderou_electronic SET nume_complet=?, domiciliu=?, denumirea_speciei_culese=?, cantitate=?, pret=? WHERE id=?",
+            "UPDATE borderou_electronic SET nume_complet=?, domiciliu=?, denumirea_speciei_culese=?, cantitate=?, pret=? WHERE id=?",
             (nume_complet, domiciliu, denumirea_speciei_culese, cantitate, pret, id))
         self.connect_.commit()
 
