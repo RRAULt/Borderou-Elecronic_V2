@@ -52,22 +52,15 @@ def delete_command():
 def update_command():
     database.update(selected_tuple[0],nume_value.get(),domiciliu_value.get(),denumirea_speciei_value.get(),cantitate_value.get(),pret_value.get()) 
 
-def clear_widgets():
-    nume_entry.delete(0,END)   
-    domiciliu_entry.delete(0,END)  
-    denumirea_speciei_entry.delete(0,END)   
-    cantitate_entry.delete(0,END)   
-    pret_entry.delete(0,END)  
 
+root= tk.Tk()
+root.geometry("1000x720")
+root["bg"] = "#FFA500"
 
-window= tk.Tk()
-window.geometry("1000x720")
-window["bg"] = "#FFA500"
-
-window.title("Borderou Electronic")
+root.title("Borderou Electronic")
 
 name_label = Label(
-    window,
+    root,
     text="Nume complet",
     fg="blue",
     width=14,
@@ -77,11 +70,11 @@ name_label = Label(
 name_label.grid(padx = 5, pady = 5, row = 1, column = 1) 
 
 nume_value=StringVar()  
-nume_entry = Entry(window,textvariable = nume_value, width = 30, font = "TNR" "bold") 
+nume_entry = Entry(root,textvariable = nume_value, width = 30, font = "TNR" "bold") 
 nume_entry.grid(row=1,column=2)                             
 
 domiciliu_label = Label(
-    window,
+    root,
     text="Domiciliu",
     fg="blue",
     width=10,
@@ -91,11 +84,11 @@ domiciliu_label = Label(
 domiciliu_label.grid(row=1,column=3)
 
 domiciliu_value=StringVar()
-domiciliu_entry = Entry(window, textvariable = domiciliu_value, width=30, font = "TNR" "bold")
+domiciliu_entry = Entry(root, textvariable = domiciliu_value, width=30, font = "TNR" "bold")
 domiciliu_entry.grid(row=1, column=4, columnspan = 3)
 
 denumirea_speciei_label = Label(
-    window,
+    root,
     text="Denumirea speciei",
     fg="blue",
     width = 14,
@@ -105,11 +98,11 @@ denumirea_speciei_label = Label(
 denumirea_speciei_label.grid( padx = 5, pady = 5, row = 2,column = 1)
 
 denumirea_speciei_value=StringVar()
-denumirea_speciei_entry = Entry(window, textvariable = denumirea_speciei_value, width = 30, font = "TNR" "bold")
+denumirea_speciei_entry = Entry(root, textvariable = denumirea_speciei_value, width = 30, font = "TNR" "bold")
 denumirea_speciei_entry.grid(row = 2, column = 2)
 
 cantitate_label = Label(
-    window,
+    root,
     text="Cantitate",
     fg="blue",
     width=10,
@@ -119,11 +112,11 @@ cantitate_label = Label(
 cantitate_label.grid( row = 2,column = 3)
 
 cantitate_value=StringVar()
-cantitate_entry = Entry(window, textvariable = cantitate_value, width=30, font = "TNR" "bold")
+cantitate_entry = Entry(root, textvariable = cantitate_value, width=30, font = "TNR" "bold")
 cantitate_entry.grid(row = 2, column = 4, columnspan = 3)
 
 pret_label = Label(
-    window,
+    root,
     text="Pret",
     fg="blue",
     width=10,
@@ -133,12 +126,12 @@ pret_label = Label(
 pret_label.grid(padx = 5, pady = 5, row = 3,column = 1)
 
 pret_value=StringVar()
-pret_entry = Entry(window, textvariable = pret_value, width = 30, font = "TNR" "bold")
+pret_entry = Entry(root, textvariable = pret_value, width = 30, font = "TNR" "bold")
 pret_entry.grid(row = 3,column = 2)
 
 
 
-list_box = Listbox(window, height = 10, width = 60)
+list_box = Listbox(root, height = 10, width = 60)
 list_box.grid(row = 5, column = 1, rowspan = 5,columnspan = 5)
 
 
@@ -147,7 +140,7 @@ list_box.bind("<<ListboxSelect>>", get_selected_row)
 
 
 view = Button(
-    window,
+    root,
     text = "View  all records",
     width = 15,
     bg="blue violet",
@@ -157,7 +150,7 @@ view = Button(
 view.grid(padx = 5, pady = 5, row = 12,column = 1)
 
 search = Button(
-    window,
+    root,
     text="Search Entry",
     width=15, 
     bg="azure4",
@@ -167,7 +160,7 @@ search = Button(
 search.grid(padx = 5, pady = 5, row = 12,column = 2)
 
 insert = Button(
-    window,
+    root,
     text="Add Entry",
     width=15, 
     bg="green",
@@ -178,7 +171,7 @@ insert = Button(
 insert.grid(padx = 5, pady = 1, row = 12 ,column = 3)
 
 update = Button(
-    window,
+    root,
     text="Update Selected",
     width=15, 
     bg="blue",
@@ -188,7 +181,7 @@ update = Button(
 update.grid(padx = 5, pady = 5, row = 13 ,column = 1)
 
 delete = Button(
-    window,
+    root,
     text="Delete Selected",
     width=15,
     bg="blue",
@@ -197,27 +190,17 @@ delete = Button(
     command = delete_command)
 delete.grid(padx = 5, pady = 5, row = 13,column = 2)
 
-refresh = Button(
-    window,
-    text="Refresh",
-    width=15, 
-    bg="blue",
-    fg="black",
-    font=('arial Bold', 15),
-    command = clear_widgets)
-refresh.grid(padx = 5, pady = 5, row = 13,column = 3)
-
 quit = Button(
-    window,
+    root,
     text="Quit",
     width=25,
     bg="red",
     fg="yellow",
     font=('arial Bold', 15),
     relief = SUNKEN,
-    command = window.destroy
+    command = root.destroy
     )
 quit.grid(row = 12, column = 4)
 
 
-window.mainloop()
+root.mainloop()
