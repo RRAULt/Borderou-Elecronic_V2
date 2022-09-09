@@ -2,7 +2,6 @@ from tkinter import *
 from database import Database
 
 
-
 import tkinter as tk
 
 database = Database("borderou_electronic.db")
@@ -23,7 +22,6 @@ def get_selected_row(event):
     cantitate_entry.insert(END, selected_tuple[4])
     pret_entry.delete(0,END)
     pret_entry.insert(END, selected_tuple[5])
-
 
 
 def view_command():
